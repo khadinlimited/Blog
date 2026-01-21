@@ -10,9 +10,9 @@ class SettingSeeder extends Seeder
     public function run()
     {
         $settings = [
-            ['key' => 'site_title', 'value' => 'Khadin Blog'],
-            ['key' => 'site_logo_text', 'value' => 'KhadinBlog'],
-            ['key' => 'footer_text', 'value' => '© 2026 Khadin.com. All rights reserved.'],
+            ['key' => 'site_title', 'value' => config('app.name', 'Khadin Blog')],
+            ['key' => 'site_logo_text', 'value' => config('app.name', 'Khadin Blog')],
+            ['key' => 'footer_text', 'value' => '© ' . date('Y') . ' ' . config('app.name', 'Khadin Blog') . '. All rights reserved.'],
             ['key' => 'facebook_url', 'value' => 'https://facebook.com'],
             ['key' => 'twitter_url', 'value' => 'https://twitter.com'],
         ];
