@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'Khadin.com Blog' }}</title>
+    <title>{{ $title ?? ($settings['site_title'] ?? 'Khadin.com Blog') }}</title>
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="twitter:card" content="summary_large_image">
     <!-- Google Fonts -->
@@ -17,8 +17,7 @@
     <header>
         <div class="container text-center">
             <nav>
-                <a href="{{ route('home') }}" class="logo">Khadin<span
-                        style="color: var(--text-main);">Blog</span></a>
+                <a href="{{ route('home') }}" class="logo">{{ $settings['site_logo_text'] ?? 'KhadinBlog' }}</a>
                 <div class="nav-links">
                     <a href="{{ route('home') }}">{{ __('Home') }}</a>
 
@@ -39,8 +38,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; {{ date('Y') }} <a href="https://khadin.com" target="_blank"
-                    style="color: inherit; text-decoration: none;">Khadin.com</a>. All rights reserved.</p>
+            <p>{{ $settings['footer_text'] ?? '© ' . date('Y') . ' Khadin.com. All rights reserved.' }}</p>
         </div>
     </footer>
 </body>

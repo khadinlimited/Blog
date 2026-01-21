@@ -77,9 +77,9 @@
     <div class="sidebar">
         <h2>Khadin Blog</h2>
         <a href="{{ route('dashboard') }}">{{ __('Admin Dashboard') }}</a>
-        <a href="#">Posts</a>
-        <a href="#">Categories</a>
-        <a href="#">Settings</a>
+        <a href="{{ route('posts.index') }}">Posts</a>
+        <a href="{{ route('categories.index') }}">Categories</a>
+        <a href="{{ route('settings.index') }}">Settings</a>
     </div>
     <div class="content">
         <div class="header">

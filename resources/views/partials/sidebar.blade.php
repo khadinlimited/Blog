@@ -20,6 +20,18 @@
     </div>
 
     <div class="widget">
+        <h3>{{ __('Social Media') }}</h3>
+        <ul>
+            @if (!empty($settings['facebook_url']))
+                <li><a href="{{ $settings['facebook_url'] }}" target="_blank">Facebook <span>&rarr;</span></a></li>
+            @endif
+            @if (!empty($settings['twitter_url']))
+                <li><a href="{{ $settings['twitter_url'] }}" target="_blank">Twitter <span>&rarr;</span></a></li>
+            @endif
+        </ul>
+    </div>
+
+    <div class="widget">
         <h3>{{ __('Recent Posts') }}</h3>
         <ul>
             @foreach ($recent_posts as $recent)

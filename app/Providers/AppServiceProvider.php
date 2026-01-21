@@ -20,5 +20,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Illuminate\Pagination\Paginator::defaultView('pagination.custom');
+
+        // Share settings with all views
+        view()->composer('*', function ($view) {
+            $settings = \App\Models\Setting::pluck('value', 'key');
+            $view->with('settings', $settings);
+        });
     }
 }

@@ -14,10 +14,10 @@ Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])-
 
 // Admin & Moderator Routes
 Route::middleware(['auth', 'role:admin,moderator'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('categories', \App\Http\Controllers\CategoryController::class);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
+    Route::get('/settings', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
 });
