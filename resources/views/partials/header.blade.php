@@ -1,7 +1,7 @@
 <header>
     <div class="container text-center">
         <nav>
-            <a href="{{ route('home') }}" class="logo">{{ $settings['site_logo_text'] ?? 'KhadinBlog' }}</a>
+            <a href="{{ route('home') }}" class="logo">{{ $settings['site_logo_text'] ?? config('app.name') }}</a>
             <div class="nav-links">
                 <a href="{{ route('home') }}">{{ __('Home') }}</a>
 

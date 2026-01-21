@@ -3,10 +3,10 @@
         <div class="footer-grid">
             <!-- Column 1: About -->
             <div class="footer-col">
-                <h3 class="footer-heading">{{ $settings['site_logo_text'] ?? 'KhadinBlog' }}</h3>
+                <h3 class="footer-heading">{{ $settings['site_logo_text'] ?? config('app.name') }}</h3>
                 <p class="footer-desc">
                     {{ __('Discover the latest news, tips, and updates from') }}
-                    {{ $settings['site_title'] ?? 'Khadin Blog' }}.
+                    {{ $settings['site_title'] ?? config('app.name') }}.
                 </p>
             </div>
 

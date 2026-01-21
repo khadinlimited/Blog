@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? ($settings['site_title'] ?? 'Khadin.com Blog') }}</title>
+    <title>{{ $title ?? ($settings['site_title'] ?? config('app.name')) }}</title>
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="twitter:card" content="summary_large_image">
     <!-- Google Fonts -->

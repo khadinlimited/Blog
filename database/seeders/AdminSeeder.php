@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
             ['email' => 'admin@khadin.com'],
             [
                 'name' => 'Super Admin',
-                'password' => Hash::make('password'), // Change this in production
+                'password' => Hash::make('admin123'),
                 'role' => 'admin',
             ]
         );
@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
             ['email' => 'mod@khadin.com'],
             [
                 'name' => 'Moderator',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('admin123'),
                 'role' => 'moderator',
             ]
         );

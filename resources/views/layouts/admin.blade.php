@@ -162,7 +162,7 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3 class="mb-0 fs-4 fw-bold text-white">
-                    <i class="fa-solid fa-gauge-high me-2 text-primary"></i>Khadin
+                    <i class="fa-solid fa-gauge-high me-2 text-primary"></i>{{ config('app.name') }}
                 </h3>
             </div>
 
