@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Khadin.com Blog' }}</title>
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="twitter:card" content="summary_large_image">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -15,7 +17,8 @@
     <header>
         <div class="container text-center">
             <nav>
-                <a href="{{ route('home') }}" class="logo">Khadin<span style="color: var(--text-main);">Blog</span></a>
+                <a href="{{ route('home') }}" class="logo">Khadin<span
+                        style="color: var(--text-main);">Blog</span></a>
                 <div class="nav-links">
                     <a href="{{ route('home') }}">{{ __('Home') }}</a>
 

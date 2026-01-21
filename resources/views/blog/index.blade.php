@@ -8,6 +8,18 @@
 @endphp
 
 @section('content')
+    @push('head')
+        <meta name="description" content="{{ __('Discover the latest news, tips, and updates from Khadin marketplace.') }}">
+        <meta property="og:title" content="Khadin Blog - Latest News & Updates">
+        <meta property="og:description"
+            content="{{ __('Discover the latest news, tips, and updates from Khadin marketplace.') }}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ route('home') }}">
+        <meta name="twitter:title" content="Khadin Blog - Latest News & Updates">
+        <meta name="twitter:description"
+            content="{{ __('Discover the latest news, tips, and updates from Khadin marketplace.') }}">
+    @endpush
+
     <div class="hero">
         <div class="container">
             @if (isset($category))

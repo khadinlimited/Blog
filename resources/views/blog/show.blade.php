@@ -11,6 +11,8 @@
 
 @push('head')
     <meta name="description" content="{{ Str::limit(strip_tags($post->$body_field), 160) }}">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="{{ $post->$title_field }}">
     <meta property="og:description" content="{{ Str::limit(strip_tags($post->$body_field), 160) }}">
     <meta property="og:type" content="article">
@@ -18,6 +20,32 @@
     @if ($post->featured_image)
         <meta property="og:image" content="{{ Storage::url($post->featured_image) }}">
     @endif
+
+    <!-- Twitter -->
+    <meta name="twitter:title" content="{{ $post->$title_field }}">
+    <meta name="twitter:description" content="{{ Str::limit(strip_tags($post->$body_field), 160) }}">
+    @if ($post->featured_image)
+        <meta name="twitter:image" content="{{ Storage::url($post->featured_image) }}">
+    @endif
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ $post->$title_field }}",
+      "image": [
+        "{{ $post->featured_image ? Storage::url($post->featured_image) : '' }}"
+      ],
+      "datePublished": "{{ $post->created_at->toIso8601String() }}",
+      "dateModified": "{{ $post->updated_at->toIso8601String() }}",
+      "author": [{
+          "@type": "Person",
+          "name": "{{ $post->user->name }}",
+          "url": "https://khadin.com"
+        }]
+    }
+    </script>
 @endpush
 
 
