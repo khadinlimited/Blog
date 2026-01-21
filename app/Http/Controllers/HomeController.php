@@ -13,10 +13,9 @@ class HomeController extends Controller
             ->latest()
             ->paginate(6);
 
-        $categories = \App\Models\Category::withCount('posts')->get();
         $recent_posts = Post::where('status', 'published')->latest()->take(5)->get();
 
-        return view('blog.index', compact('posts', 'categories', 'recent_posts'));
+        return view('blog.index', compact('posts', 'recent_posts'));
     }
 
     public function show($slug)
@@ -25,10 +24,9 @@ class HomeController extends Controller
             ->where('status', 'published')
             ->firstOrFail();
 
-        $categories = \App\Models\Category::withCount('posts')->get();
         $recent_posts = Post::where('status', 'published')->latest()->take(5)->get();
 
-        return view('blog.show', compact('post', 'categories', 'recent_posts'));
+        return view('blog.show', compact('post', 'recent_posts'));
     }
 
     public function categoryPosts($slug)
@@ -40,9 +38,8 @@ class HomeController extends Controller
             ->latest()
             ->paginate(10);
 
-        $categories = \App\Models\Category::withCount('posts')->get();
         $recent_posts = Post::where('status', 'published')->latest()->take(5)->get();
 
-        return view('blog.index', compact('posts', 'categories', 'recent_posts', 'category'));
+        return view('blog.index', compact('posts', 'recent_posts', 'category'));
     }
 }

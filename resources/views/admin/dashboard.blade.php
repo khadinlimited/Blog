@@ -1,19 +1,44 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="card">
-        <h1>Dashboard</h1>
-        <p>Welcome to the admin panel.</p>
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="h4 mb-0 text-gray-800">Dashboard Overview</h2>
+        </div>
+    </div>
 
-        <div
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
-            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <h3>Total Posts</h3>
-                <p style="font-size: 24px; font-weight: bold;">{{ $postCount }}</p>
+    <div class="row g-4">
+        <!-- Posts Card -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-start border-4 border-primary">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1 text-uppercase fw-bold" style="font-size: 0.85rem;">Total Posts</p>
+                            <h2 class="mb-0 fw-bold text-dark">{{ $postCount }}</h2>
+                        </div>
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 text-primary">
+                            <i class="fa-solid fa-newspaper fa-xl"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <h3>Total Categories</h3>
-                <p style="font-size: 24px; font-weight: bold;">{{ $categoryCount }}</p>
+        </div>
+
+        <!-- Categories Card -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-start border-4 border-success">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1 text-uppercase fw-bold" style="font-size: 0.85rem;">Categories</p>
+                            <h2 class="mb-0 fw-bold text-dark">{{ $categoryCount }}</h2>
+                        </div>
+                        <div class="rounded-circle bg-success bg-opacity-10 p-3 text-success">
+                            <i class="fa-solid fa-folder-tree fa-xl"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

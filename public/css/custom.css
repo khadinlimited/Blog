@@ -565,6 +565,19 @@ footer {
     scrollbar-width: thin;
 }
 
+/* Footer Social Links */
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: inherit;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
 .thumbnail-strip::-webkit-scrollbar {
     height: 6px;
 }
@@ -599,4 +612,93 @@ footer {
 .thumbnail-item.active {
     opacity: 1;
     border-color: var(--primary);
+}
+
+/* Enhanced Footer */
+.site-footer {
+    background: #1a1e21;
+    /* Dark background */
+    color: #adb5bd;
+    padding: 40px 0 20px;
+    /* Reduced top padding */
+    margin-top: 60px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    /* Left align for symmetry */
+}
+
+.footer-heading {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-desc {
+    line-height: 1.6;
+    font-size: 0.9rem;
+    max-width: 300px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline-block;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    transform: translateX(3px);
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-social a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.footer-social a:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #2d3238;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6c757d;
 }

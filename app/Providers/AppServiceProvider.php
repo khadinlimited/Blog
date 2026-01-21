@@ -21,10 +21,12 @@ class AppServiceProvider extends ServiceProvider
     {
         \Illuminate\Pagination\Paginator::defaultView('pagination.custom');
 
-        // Share settings with all views
+        // Share settings and categories with all views
         view()->composer('*', function ($view) {
             $settings = \App\Models\Setting::pluck('value', 'key');
+            $categories = \App\Models\Category::withCount('posts')->get();
             $view->with('settings', $settings);
+            $view->with('categories', $categories);
         });
     }
 }

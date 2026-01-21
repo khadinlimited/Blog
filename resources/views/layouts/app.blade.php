@@ -9,38 +9,17 @@
     <meta name="twitter:card" content="summary_large_image">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     @stack('head')
 </head>
 
 <body>
-    <header>
-        <div class="container text-center">
-            <nav>
-                <a href="{{ route('home') }}" class="logo">{{ $settings['site_logo_text'] ?? 'KhadinBlog' }}</a>
-                <div class="nav-links">
-                    <a href="{{ route('home') }}">{{ __('Home') }}</a>
-
-                    <span class="lang-switch">
-                        <a href="?lang=en" class="{{ app()->getLocale() == 'en' ? 'active' : '' }}">EN</a>
-                        <a href="?lang=bn" class="{{ app()->getLocale() == 'bn' ? 'active' : '' }}">BN</a>
-                    </span>
-
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="btn-login">Dashboard</a>
-                    @endauth
-                </div>
-            </nav>
-        </div>
-    </header>
+    @include('partials.header')
 
     @yield('content')
 
-    <footer>
-        <div class="container">
-            <p>{{ $settings['footer_text'] ?? '© ' . date('Y') . ' Khadin.com. All rights reserved.' }}</p>
-        </div>
-    </footer>
+    @include('partials.footer')
 </body>
 
 </html>
