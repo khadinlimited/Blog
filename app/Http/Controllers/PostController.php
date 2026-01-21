@@ -143,4 +143,18 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
+
+    /**
+     * Update the status of the specified resource.
+     */
+    public function updateStatus(Request $request, Post $post)
+    {
+        $request->validate([
+            'status' => 'required|in:draft,published',
+        ]);
+
+        $post->update(['status' => $request->status]);
+
+        return back()->with('success', 'Post status updated successfully.');
+    }
 }
