@@ -128,4 +128,80 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <!-- Daily Traffic -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white py-3 border-bottom">
+                    <h5 class="mb-0 fw-bold"><i class="fa-solid fa-chart-line text-success me-2"></i>Daily Visitors (14
+                        Days)</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-3 border-top-0">Date</th>
+                                    <th class="text-end pe-3 border-top-0">Visitors</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($dailyTraffic as $day)
+                                    <tr>
+                                        <td class="ps-3">{{ \Carbon\Carbon::parse($day->date)->format('M d, Y') }}</td>
+                                        <td class="text-end pe-3 fw-bold">{{ number_format($day->count) }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="2" class="text-center py-4 text-muted">No data available.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Referrers -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white py-3 border-bottom">
+                    <h5 class="mb-0 fw-bold"><i class="fa-solid fa-globe text-info me-2"></i>Top Sources</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-3 border-top-0">Source</th>
+                                    <th class="text-end pe-3 border-top-0">Visits</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($topReferrers as $ref)
+                                    <tr>
+                                        <td class="ps-3">
+                                            <div class="text-truncate" style="max-width: 300px;">
+                                                <a href="{{ $ref->referrer }}" target="_blank"
+                                                    class="text-decoration-none text-dark">
+                                                    {{ parse_url($ref->referrer, PHP_URL_HOST) ?? $ref->referrer }}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="text-end pe-3 fw-bold">{{ number_format($ref->count) }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="2" class="text-center py-4 text-muted">No referrer data.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

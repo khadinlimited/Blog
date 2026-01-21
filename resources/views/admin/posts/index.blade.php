@@ -70,14 +70,16 @@
                                             title="Edit">
                                             <i class="fa-solid fa-pen"></i>
                                         </a>
-                                        <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline"
-                                            onsubmit="return confirm('Are you sure?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger" title="Delete">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        @can('delete', $post)
+                                            <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline"
+                                                onsubmit="return confirm('Are you sure?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger" title="Delete">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

@@ -135,6 +135,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // Enforce deletion policy: Only admins can delete
+        if (\Illuminate\Support\Facades\Gate::denies('delete', $post)) {
+            abort(403, 'You do not have permission to delete posts.');
+        }
+
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
