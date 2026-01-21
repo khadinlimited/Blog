@@ -14,6 +14,10 @@ class DashboardController extends Controller
         $postCount = Post::count();
         $categoryCount = Category::count();
         
-        return view('admin.dashboard', compact('postCount', 'categoryCount'));
+        $totalViews = Post::sum('views');
+        $popularPosts = Post::orderByDesc('views')->take(5)->get();
+        $latestPosts = Post::latest()->take(5)->get();
+
+        return view('admin.dashboard', compact('postCount', 'categoryCount', 'totalViews', 'popularPosts', 'latestPosts'));
     }
 }

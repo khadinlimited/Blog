@@ -17,7 +17,21 @@
 <body>
     @include('partials.header')
 
-    @yield('content')
+    <div class="container">
+        @if (Route::is('home') || Route::is('category.posts'))
+            @include('partials.hero')
+        @endif
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                @yield('content')
+            </div>
+
+            @include('partials.sidebar')
+        </div>
+
+        @yield('pagination')
+    </div>
 
     @include('partials.footer')
 </body>

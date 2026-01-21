@@ -25,8 +25,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $settings = \App\Models\Setting::pluck('value', 'key');
             $categories = \App\Models\Category::withCount('posts')->get();
+            $recent_posts = \App\Models\Post::where('status', 'published')->latest()->take(5)->get();
+            
             $view->with('settings', $settings);
             $view->with('categories', $categories);
+            $view->with('recent_posts', $recent_posts);
         });
     }
 }

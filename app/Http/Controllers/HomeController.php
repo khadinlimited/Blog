@@ -24,6 +24,8 @@ class HomeController extends Controller
             ->where('status', 'published')
             ->firstOrFail();
 
+        $post->increment('views');
+
         $recent_posts = Post::where('status', 'published')->latest()->take(5)->get();
 
         return view('blog.show', compact('post', 'recent_posts'));

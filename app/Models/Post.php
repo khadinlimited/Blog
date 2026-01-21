@@ -19,6 +19,7 @@ class Post extends Model
         'slug',
         'status',
         'featured_image',
+        'views',
     ];
 
     public function user()
