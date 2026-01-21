@@ -4,7 +4,7 @@
     <div class="card">
         <h1>Edit Post</h1>
 
-        <form action="{{ route('posts.update', $post) }}" method="POST">
+        <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -17,6 +17,31 @@
             <div style="margin-bottom: 15px;">
                 <label for="title_bn" style="display: block; margin-bottom: 5px;">Title (Bangla)</label>
                 <input type="text" name="title_bn" id="title_bn" value="{{ $post->title_bn }}" required
+                    style="width: 100%; padding: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="featured_image" style="display: block; margin-bottom: 5px;">Featured Image (Thumbnail)</label>
+                @if ($post->featured_image)
+                    <div style="margin-bottom: 10px;">
+                        <img src="{{ Storage::url($post->featured_image) }}" alt="Thumbnail"
+                            style="max-height: 100px; border-radius: 4px;">
+                    </div>
+                @endif
+                <input type="file" name="featured_image" id="featured_image" style="width: 100%; padding: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="gallery_images" style="display: block; margin-bottom: 5px;">Add Gallery Images</label>
+                @if ($post->images->count() > 0)
+                    <div style="margin-bottom: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        @foreach ($post->images as $img)
+                            <img src="{{ Storage::url($img->image_path) }}" alt="Gallery"
+                                style="height: 60px; border-radius: 4px; border: 1px solid #ddd;">
+                        @endforeach
+                    </div>
+                @endif
+                <input type="file" name="gallery_images[]" id="gallery_images" multiple
                     style="width: 100%; padding: 8px;">
             </div>
 

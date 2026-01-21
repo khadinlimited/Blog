@@ -4,7 +4,7 @@
     <div class="card">
         <h1>Create Post</h1>
 
-        <form action="{{ route('posts.store') }}" method="POST">
+        <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div style="margin-bottom: 15px;">
@@ -15,6 +15,17 @@
             <div style="margin-bottom: 15px;">
                 <label for="title_bn" style="display: block; margin-bottom: 5px;">Title (Bangla)</label>
                 <input type="text" name="title_bn" id="title_bn" required style="width: 100%; padding: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="featured_image" style="display: block; margin-bottom: 5px;">Featured Image (Thumbnail)</label>
+                <input type="file" name="featured_image" id="featured_image" style="width: 100%; padding: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="gallery_images" style="display: block; margin-bottom: 5px;">Gallery Images</label>
+                <input type="file" name="gallery_images[]" id="gallery_images" multiple
+                    style="width: 100%; padding: 8px;">
             </div>
 
             <div style="margin-bottom: 15px;">

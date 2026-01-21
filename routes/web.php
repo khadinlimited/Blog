@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/post/{slug}', [\App\Http\Controllers\HomeController::class, 'show'])->name('post.show');
+Route::get('/category/{slug}', [\App\Http\Controllers\HomeController::class, 'categoryPosts'])->name('category.posts');
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 
 // Auth Routes

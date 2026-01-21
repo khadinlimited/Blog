@@ -40,9 +40,16 @@ class PostController extends Controller
             'body_en' => 'required',
             'body_bn' => 'required',
             'status' => 'required|in:draft,published',
+            'featured_image' => 'nullable|image|max:2048',
+            'gallery_images.*' => 'image|max:2048',
         ]);
 
-        Post::create([
+        $featuredImagePath = null;
+        if ($request->hasFile('featured_image')) {
+            $featuredImagePath = $request->file('featured_image')->store('posts', 'public');
+        }
+
+        $post = Post::create([
             'user_id' => Auth::id(),
             'category_id' => $request->category_id,
             'title_en' => $request->title_en,
@@ -51,7 +58,15 @@ class PostController extends Controller
             'body_en' => $request->body_en,
             'body_bn' => $request->body_bn,
             'status' => $request->status,
+            'featured_image' => $featuredImagePath,
         ]);
+
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $image) {
+                $path = $image->store('posts/gallery', 'public');
+                $post->images()->create(['image_path' => $path]);
+            }
+        }
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
@@ -85,9 +100,11 @@ class PostController extends Controller
             'body_en' => 'required',
             'body_bn' => 'required',
             'status' => 'required|in:draft,published',
+            'featured_image' => 'nullable|image|max:2048',
+            'gallery_images.*' => 'image|max:2048',
         ]);
 
-        $post->update([
+        $data = [
             'category_id' => $request->category_id,
             'title_en' => $request->title_en,
             'title_bn' => $request->title_bn,
@@ -95,7 +112,20 @@ class PostController extends Controller
             'body_en' => $request->body_en,
             'body_bn' => $request->body_bn,
             'status' => $request->status,
-        ]);
+        ];
+
+        if ($request->hasFile('featured_image')) {
+            $data['featured_image'] = $request->file('featured_image')->store('posts', 'public');
+        }
+
+        $post->update($data);
+
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $image) {
+                $path = $image->store('posts/gallery', 'public');
+                $post->images()->create(['image_path' => $path]);
+            }
+        }
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
